@@ -1,0 +1,21 @@
+.bingo-letter-container {
+    font-family: "Anton SC", serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 5rem;
+    font-variation-settings:
+        "ROND" 100;
+    transition: 600ms color ease-in-out;
+    padding: 1rem 0;
+}
+
+
+.bingo-letter {
+    transition: 500ms opacity ease-in-out;
+    /* transform-origin: 25px 89px; */
+    display: flex;
+    height: 5rem;
+    align-items: center;
+    transform-origin: bottom left;
+}

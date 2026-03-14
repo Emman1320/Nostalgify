@@ -1,0 +1,173 @@
+.bingo-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: fit-content;
+    /* border: 1px solid red; */
+    align-items: center;
+    background-color: transparent;
+}
+
+.bingo-row {
+    display: flex;
+}
+
+.bingo-num {
+    color: white;
+    /* border: 1px solid red; */
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    font-size: 30px;
+    position: relative;
+    cursor: pointer;
+    transition: opacity 0.2s ease, transform 0.5s ease;
+    user-select: none;
+}
+
+.touch-ripple {
+    background-color: #1e1e2f;
+    border-radius: 50%;
+    transition: transform 1s ease;
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    transform: scale(0);
+    cursor: auto;
+    opacity: 0.9;
+}
+
+.bingo-num:hover {
+    opacity: 0.9;
+}
+
+.strike-box {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    transform: scale(0);
+    cursor: auto;
+    /* opacity: 0; */
+    /* transition: transform 1s ease; */
+    /* background-color: #00796B; */
+}
+
+.rotate {
+    animation: rotate 0.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+.flip {
+    display: inline-block;
+    /* Required for transform to work properly */
+    animation: flipDiagonal 1s ease forwards;
+}
+
+.stamp {
+    position: absolute;
+    opacity: 0;
+    transform: scale(3) rotate(-26deg);
+    animation: stamp 0.5s 3s cubic-bezier(0.5, 0, 0.75, 0) forwards;
+}
+
+.success.stamp {
+    top: 32%;
+    right: 0%;
+    width: 26%;
+}
+
+.failure.stamp {
+    bottom: 17%;
+    right: -1%;
+    width: 28%;
+    animation-delay: 3.5s;
+}
+
+.crown {
+    animation: appear 0.5s 3s cubic-bezier(0.37, 0, 0.63, 1) forwards;
+    position: absolute;
+    top: 0;
+    left: 44%;
+    opacity: 0;
+    width: 35%;
+}
+
+.meditating-crowned-man {
+    animation: appear 0.5s 3s cubic-bezier(0.37, 0, 0.63, 1) forwards;
+    position: absolute;
+    bottom: 0;
+    left: 22%;
+    opacity: 0;
+    width: 45%;
+}
+
+.crying-after-loss {
+    animation: appear 1s 5s cubic-bezier(0.37, 0, 0.63, 1) forwards;
+    position: absolute;
+    bottom: 0;
+    left: 40%;
+    opacity: 0;
+    width: 38%;
+}
+
+.heart-break {
+    object-fit: contain;
+    position: absolute;
+    left: 0;
+    width: 10%;
+    top: 0;
+}
+
+.postgame-asset-fade {
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    will-change: opacity;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(180deg);
+    }
+}
+
+@keyframes flipDiagonal {
+    0% {
+        transform: perspective(600px) rotateY(0deg) rotateX(0deg);
+    }
+
+    50% {
+        transform: perspective(600px) rotateY(180deg) rotateX(180deg);
+    }
+
+    100% {
+        transform: perspective(600px) rotateY(0deg) rotateX(0deg);
+    }
+}
+
+@keyframes stamp {
+    0% {
+        transform: scale(3) rotate(-26deg);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1) rotate(-26deg);
+        opacity: 1;
+    }
+}
+
+@keyframes appear {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}

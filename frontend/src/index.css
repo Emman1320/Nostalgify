@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton+SC&family=Doto:wght@100..900&family=Kode+Mono:wght@400..700&display=swap');
+
+body {
+  margin: 0;
+  background-color: #1e1e2f;
+  font-optical-sizing: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-style: normal;
+  font-family: "Anton SC", sans-serif;
+  box-sizing: border-box;
+}
+
+:root {
+  --blue: #48abe0;
+  --bright-red: #e32636;
+  --dark: #1e1e2f;
+  --medium-red: #cb212f;
+}

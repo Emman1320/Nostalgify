@@ -1,0 +1,20 @@
+.modal-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    background: #1e1e2f;
+    box-shadow: 0 0 20px 3px #000000;
+    padding: 1rem;
+}
+
+.modal-container:focus {
+    outline: 0;
+}
+
+.header {
+    font-family: "Anton SC", sans-serif;
+    color: white;
+    letter-spacing: 0.1ch;
+}

@@ -1,0 +1,169 @@
+.header {
+    font-family: "Anton SC", sans-serif;
+    font-weight: 400;
+    font-size: 7rem;
+    font-style: normal;
+    /* text-shadow: #E32636 4px 4px 0px, #48abe0 -4px -4px 0px; */
+    text-shadow: var(--medium-red) 4px 4px 0px;
+    align-items: center;
+}
+
+.header-container {
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    height: 190px;
+}
+
+.home-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+
+}
+
+.home-player-tag-container {
+    font-family: "Anton SC", sans-serif;
+    margin-bottom: 3.5rem;
+    font-size: 40px;
+    display: flex;
+    gap: 12px;
+}
+
+.home-player-tag {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    /* height: 100%; */
+}
+
+.player-tag-border {
+    height: 5px;
+    width: 0%;
+    background-color: var(--bright-red);
+    transition: width 0.5s cubic-bezier(0, 0, 0, 0.91);
+}
+
+.home-player-tag:hover .player-tag-border {
+    width: 100%;
+}
+
+.home-player-tag:focus-within .player-tag-border {
+    width: 100%;
+}
+
+.graphiti-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.design-element {
+    transform: scaleX(-1) rotate(110deg);
+    width: 150px;
+    position: relative;
+    left: -60px;
+    top: -150px;
+}
+
+.graphiti-right-container {
+    transform: scaleX(-1);
+}
+
+.player-name-container {
+    display: flex;
+    min-height: 60px;
+}
+
+.player-name-container:focus {
+    outline: 0;
+}
+
+.player-name-container:focus .caret-container {
+    width: 7px;
+    margin: 0 4px 0 4px;
+}
+
+.caret-container {
+    transition: all 0.4s ease;
+    width: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.player-name-container:focus .caret {
+    animation: caret 0.5s cubic-bezier(1, 0, 0.6, 1.25) 0.4s infinite alternate;
+}
+
+.caret {
+    width: 100%;
+    height: 90%;
+    background-color: var(--blue);
+}
+
+.graphiti-top {
+    width: 0;
+    height: 0;
+    border-bottom: 10px solid transparent;
+    border-left: 100px solid #cb212f;
+
+    transform: rotate(35deg);
+    position: relative;
+    left: -50px;
+    top: -30px;
+}
+
+.graphiti-down {
+    width: 0;
+    height: 0;
+    border-bottom: 10px solid transparent;
+    border-left: 70px solid #cb212f;
+
+    transform: rotate(-10deg);
+    position: relative;
+    left: -20px;
+    top: -30px;
+}
+
+.wings-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: -1;
+}
+
+.wings {
+    position: absolute;
+    width: 400px;
+    opacity: 0.4;
+    top: -2px;
+}
+
+.game-room-action {
+    display: flex;
+    gap: 10px;
+}
+
+
+@keyframes caret {
+    0% {
+        height: 90%;
+    }
+
+    100% {
+        height: 0;
+    }
+}
+
+@keyframes caretAppear {
+    0% {
+        width: 0;
+    }
+
+    100% {
+        width: 8px;
+    }
+}

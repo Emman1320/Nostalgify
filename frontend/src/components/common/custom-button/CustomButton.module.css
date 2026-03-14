@@ -1,0 +1,37 @@
+.button {
+    border-radius: 25px;
+    height: 50px;
+    border: 0;
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+    align-items: center;
+    background-color: var(--blue);
+    gap: 0px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    box-shadow: 3px 6px 11px -3px #00000059;
+    font-size: 20px;
+}
+
+.button:hover {
+    box-shadow: 5px 6px 12px -2px #0000006b;
+}
+
+.button-icon-container {
+    width: 50px;
+    height: 100%;
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+}
+
+.button-text {
+    font-family: "Anton SC", sans-serif;
+    overflow: hidden;
+    width: 75px;
+    transition: all 0.4s ease 0.1s;
+}
