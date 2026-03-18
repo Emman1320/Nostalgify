@@ -1,11 +1,15 @@
 import { io, Socket } from "socket.io-client";
 
+const socketUrl = process.env.REACT_APP_WEB_SOCKET_URL || window.location.origin;
+const socketPath = process.env.REACT_APP_WEB_SOCKET_PATH || "/socket.io";
+
 class SocketManager {
   static socket: Socket;
   static playerId: string;
 
   static connect(id: string) {
-    this.socket = io(`${process.env.REACT_APP_WEB_SOCKET_URL}`, {
+    this.socket = io(socketUrl, {
+      path: socketPath,
       query: { playerId: id },
       reconnection: true,
       reconnectionDelay: 1000,

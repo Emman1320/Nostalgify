@@ -1,0 +1,52 @@
+services:
+  valkey:
+    image: valkey/valkey:8-alpine
+    command: ["valkey-server", "--save", "", "--appendonly", "no"]
+    restart: unless-stopped
+
+  backend:
+    build:
+      context: ./backend
+    image: ${BACKEND_IMAGE:-bingo-revamp-backend:local}
+    environment:
+      NODE_ENV: production
+      PORT: ${PORT:-8000}
+      SOCKET_PORT: ${SOCKET_PORT:-5000}
+      SOCKET_PATH: /socket.io
+      VALKEY_URL: ${VALKEY_URL:-redis://valkey:6379}
+      CORS_ORIGIN: ${CORS_ORIGIN:-http://localhost}
+    depends_on:
+      - valkey
+    restart: unless-stopped
+    expose:
+      - "8000"
+      - "5000"
+
+  nginx:
+    build:
+      context: .
+      dockerfile: deploy/nginx/Dockerfile
+    image: ${NGINX_IMAGE:-bingo-revamp-nginx:local}
+    depends_on:
+      - backend
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      APP_DOMAIN: ${APP_DOMAIN:-_}
+    volumes:
+      - certbot-www:/var/www/certbot
+      - letsencrypt:/etc/letsencrypt
+    restart: unless-stopped
+
+  certbot:
+    image: certbot/certbot:latest
+    volumes:
+      - certbot-www:/var/www/certbot
+      - letsencrypt:/etc/letsencrypt
+    profiles:
+      - certbot
+
+volumes:
+  certbot-www:
+  letsencrypt:

@@ -1,0 +1,5 @@
+node_modules
+dist
+.env
+bingo.db
+npm-debug.log

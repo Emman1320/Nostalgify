@@ -4,10 +4,17 @@ import playerController from "../controllers/player.controller";
 import { SocketChannels } from "../constants/enum";
 import gameStateManager from "./game-state-redis";
 
+const corsOrigins = (process.env.CORS_ORIGIN ?? "http://localhost:3000")
+    .split(',')
+    .map((origin) => origin.trim())
+    .filter(Boolean);
+
 const io = new Server({
+    path: process.env.SOCKET_PATH || "/socket.io",
     cors: {
-        origin: "http://localhost:3000",
-        methods: ["GET", "POST"]
+        origin: corsOrigins,
+        methods: ["GET", "POST"],
+        credentials: false
     },
 });
 

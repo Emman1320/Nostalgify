@@ -1,7 +1,7 @@
 import axios, { Method } from "axios";
 
 const api = axios.create({
-    baseURL: process.env.REACT_APP_BACKEND_URL
+    baseURL: process.env.REACT_APP_BACKEND_URL || "/api"
 });
 
 // function createRoute<D = any, P = any>(method: Method, url: string) {

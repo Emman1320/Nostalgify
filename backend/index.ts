@@ -9,8 +9,19 @@ import io from "./src/utils/socket-io";
 
 const app = express();
 
-app.use(cors());
+const corsOrigins = (process.env.CORS_ORIGIN ?? "http://localhost:3000")
+    .split(',')
+    .map((origin) => origin.trim())
+    .filter(Boolean);
+
+app.use(cors({
+    origin: corsOrigins,
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"]
+}));
 app.use(express.json());
+app.get('/health', (_req, res) => {
+    res.status(200).json({ status: 'ok' });
+});
 
 // Initialize server
 const startServer = async () => {
@@ -31,7 +42,7 @@ const startServer = async () => {
 
     app.use(common.errorHandler);
 
-    const PORT = process.env.PORT ?? 8000;
+    const PORT = parseInt(process.env.PORT ?? "8000", 10);
     const server = app.listen(PORT, () => {
         console.log(`Server is up and running on port ${PORT}`);
     });
