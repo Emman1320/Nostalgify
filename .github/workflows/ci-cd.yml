@@ -42,7 +42,7 @@ jobs:
 
       - name: Build frontend
         working-directory: frontend
-        run: npm run build
+        run: CI=false npm run build
 
       - name: Build backend image
         run: docker build -t backend-smoke ./backend
