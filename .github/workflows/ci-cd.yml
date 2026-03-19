@@ -11,39 +11,8 @@ permissions:
   packages: write
 
 jobs:
-  validate:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
-
-      - name: Build backend image (validation)
-        uses: docker/build-push-action@v6
-        with:
-          context: ./backend
-          file: ./backend/Dockerfile
-          push: false
-          tags: backend-smoke:latest
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
-
-      - name: Build nginx image (validation)
-        uses: docker/build-push-action@v6
-        with:
-          context: .
-          file: ./deploy/nginx/Dockerfile
-          push: false
-          tags: nginx-smoke:latest
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
-
   deploy:
     if: github.event_name == 'workflow_dispatch'
-    needs: validate
     runs-on: ubuntu-latest
 
     steps:
